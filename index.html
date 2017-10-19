@@ -1,0 +1,58 @@
+<!doctype html>
+<head>
+	<title> 우는 이모지 </title>
+	<style>
+		html { font-family: 'Spoqa Han Sans'; font-weight: 300;}
+		body {background:black;}
+		h1 {font-size: 4em; color: white; font-weight: bold; font float:left; text-align: center; margin-top: 300px; text-shadow: 3px 3px red;}
+		.imoji{
+			width: 100px; height: 400px;
+			/*background :url('imoji.png');
+			background-size: 100% auto;*/
+			background-repeat: no-repeat;
+			animation: bMove 1s linear;
+		}
+
+		@keyframes bMove{
+			0%{ background-position: 0 200px; opacity: 0; }
+			20%{opacity:1;}
+			80%{opacity: 1;}
+			100%{background-position: 0 0; opacity: 0;
+			}
+
+		}
+	</style>
+</head>
+<body>
+	<h1> I don't wanna do HOMEWORK </h1>
+	<script>
+		setInterval (attachImoji, 200);
+
+		function attachImoji(){
+		var t = document.createElement("div"); 
+		t.setAttribute("class","imoji");
+		t.style.position = "absolute";
+		t.style.background = "url('imoji" + randomCY(1,4) + ".png') no-repeat";
+		t.style.backgroundSize = "100% auto";
+		t.style.top = randomCY(0, window.innerHeight) +"px";
+		t.style.left = randomCY(0,window.innerWidth)
+			+"px";
+
+		t.addEventListener("animationend",remove);
+		document.body.appendChild(t);
+		}
+
+		function remove(){
+		var t = event.target; 
+		t.parentNode.removeChild(t); 
+	}
+		//attachImoji();
+
+		function randomCY(min, max) 
+		{
+			min = Math.ceil(min);
+			max = Math.floor(max);
+			return Math.floor(Math.random()*(max - min + 1)) + min;
+		}
+	</script>
+</body>
